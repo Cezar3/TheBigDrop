@@ -21,6 +21,7 @@ from time import time
 from bson.objectid import ObjectId
 
 class User(UserMixin, Document):
+    role = StringField()
     createdate = DateTimeField(defaultdefault=dt.datetime.utcnow)
     gid = StringField(sparse=True, unique=True)
     gname = StringField()
@@ -35,6 +36,7 @@ class User(UserMixin, Document):
     adult_lname = StringField()
     adult_email = StringField()
     consent = BooleanField(default=False)
+    rating = IntField()
 
     meta = {
         'ordering': ['lname','fname']
@@ -59,12 +61,39 @@ class Blog(Document):
     subject = StringField()
     content = StringField()
     tag = StringField()
+    rating = IntField()
     create_date = DateTimeField(default=dt.datetime.utcnow)
     modify_date = DateTimeField()
 
     meta = {
         'ordering': ['-createdate']
     }
+class Deer(Document):
+    author = ReferenceField('User',reverse_delete_rule=CASCADE) 
+    parent = ReferenceField('User',reverse_delete_rule=CASCADE) 
+    name = StringField()
+    description = StringField()
+    likes = StringField()
+    create_date = DateTimeField(default=dt.datetime.utcnow)
+    modify_date = DateTimeField()
+
+    meta = {
+        'ordering': ['-createdate']
+    }
+# class Adoption(Document):
+#     # Line 63 is a way to access all the information in Course and Teacher w/o storing it in this class
+#     parent = ReferenceField('User',reverse_delete_rule=CASCADE) 
+#     deer = ReferenceField('Deer',reverse_delete_rule=CASCADE)
+#     # This could be used to allow comments on comments
+#     adoption = ReferenceField('Adoption',reverse_delete_rule=CASCADE)
+#     # Line 68 is where you store all the info you need but won't find in the Course and Teacher Object
+#     content = StringField()
+#     create_date = DateTimeField(default=dt.datetime.utcnow)
+#     modify_date = DateTimeField()
+
+#     meta = {
+#         'ordering': ['-createdate']
+#     }
 
 class Comment(Document):
     # Line 63 is a way to access all the information in Course and Teacher w/o storing it in this class

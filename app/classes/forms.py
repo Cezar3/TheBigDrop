@@ -10,6 +10,7 @@ from wtforms import StringField, SubmitField, TextAreaField, IntegerField, Selec
 from wtforms_components import TimeField
 
 class ProfileForm(FlaskForm):
+    role = SelectField('Role',choices=[("Teacher","Teacher"),("Student","Student")])
     fname = StringField('First Name', validators=[DataRequired()])
     lname = StringField('Last Name', validators=[DataRequired()]) 
     image = FileField("Image") 
@@ -36,12 +37,19 @@ class BlogForm(FlaskForm):
     subject = StringField('Subject', validators=[DataRequired()])
     content = TextAreaField('Blog', validators=[DataRequired()])
     tag = StringField('Tag', validators=[DataRequired()])
+    rating = IntegerField('Number Rating', validators=[DataRequired()] )
     submit = SubmitField('Blog')
+
+class DeerForm(FlaskForm):
+    name = StringField('Name', validators=[DataRequired()])
+    description = TextAreaField('description', validators=[DataRequired()])
+    likes = StringField('likes', validators=[DataRequired()])
+    submit = SubmitField('Deer')
 
 class CommentForm(FlaskForm):
     content = TextAreaField('Comment', validators=[DataRequired()])
     submit = SubmitField('Comment')
-
+    
 class ClinicForm(FlaskForm):
     name = StringField('Name', validators=[DataRequired()])
     streetAddress = StringField('Address', validators=[DataRequired()])

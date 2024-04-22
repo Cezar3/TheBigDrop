@@ -6,6 +6,10 @@ from flask import render_template
 def index():
     return render_template('index.html')
 
-@app.route('/aboutus')
+@app.route('/aboutme')
 def aboutus():
-    return render_template('aboutus.html')
+    return render_template('aboutme.html')
+
+@app.route('/aboutme') #ask why this isnt working
+def aboutme():
+    return render_template('aboutme.html')

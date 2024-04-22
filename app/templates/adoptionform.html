@@ -10,17 +10,17 @@
             {% endfor %}
         {% endfor %}
 
-        <h1 class="display-5">{{blog.subject}}</h1>
-        {{blog.content}} <br>
-        <h1 class="display-5">New Comment</h1>
+        <h1 class="display-5">{{deer.name}}</h1>
+        {{deer.description}} <br>
+        <h1 class="display-5">New Deer</h1>
 
-        <form method=post>
-            {{ form.hidden_tag() }}
+        <form method=adoption>
+            {{ form.hidden_likes() }}
             
-            {{ form.content.label }} <br>
-            {{ form.content(cols=64) }}
+            {{ form.description.label }} <br>
+            {{ form.description(cols=64) }}
             <!--List the errors for this field-->
-            {% for error in form.content.errors %}
+            {% for error in form.description.errors %}
                 <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
             <br>

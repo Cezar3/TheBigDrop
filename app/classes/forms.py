@@ -9,6 +9,7 @@ from wtforms.fields.html5 import URLField, DateField, IntegerRangeField, EmailFi
 from wtforms import StringField, SubmitField, TextAreaField, IntegerField, SelectField, FileField, RadioField
 from wtforms_components import TimeField
 
+
 class ProfileForm(FlaskForm):
     role = SelectField('Role',choices=[("Teacher","Teacher"),("Student","Student")])
     fname = StringField('First Name', validators=[DataRequired()])
@@ -34,10 +35,10 @@ class SleepForm(FlaskForm):
     submit = SubmitField("Submit")
 
 class BlogForm(FlaskForm):
-    subject = StringField('Subject', validators=[DataRequired()])
-    content = TextAreaField('Blog', validators=[DataRequired()])
-    tag = StringField('Tag', validators=[DataRequired()])
-    rating = IntegerField('Number Rating', validators=[DataRequired()] )
+    emoji = SelectField('Pick an emoji', validators=[DataRequired()])
+    location = TextAreaField('Where are you located?', validators=[DataRequired()])
+    dow = StringField('What day of the week is it?', validators=[DataRequired()])
+    rating = StringField('What time of day is it?', validators=[DataRequired()] )
     submit = SubmitField('Blog')
 
 class DeerForm(FlaskForm):

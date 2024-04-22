@@ -10,6 +10,7 @@ from typing import KeysView
 from xmlrpc.client import Boolean
 
 from setuptools import SetuptoolsDeprecationWarning
+from wtforms import SelectField
 from app import app
 from flask import flash
 from flask_login import UserMixin
@@ -58,10 +59,10 @@ class Sleep(Document):
     
 class Blog(Document):
     author = ReferenceField('User',reverse_delete_rule=CASCADE) 
-    subject = StringField()
-    content = StringField()
-    tag = StringField()
-    rating = IntField()
+    emoji = SelectField()
+    location = StringField()
+    dow = StringField()
+    time = StringField()
     create_date = DateTimeField(default=dt.datetime.utcnow)
     modify_date = DateTimeField()
 

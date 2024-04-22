@@ -6,10 +6,10 @@
 <img src="/static/CloudsPNG.png" class="rounded float-start" width = "200" hieght= "200" alt="...">    </div>
 <div class="row">
     <div class="col-4">
-        <h1 class="display-1">Any Feedback for us?</h1>
+        <h1 class="display-1">Vent your mood through an Emoji?</h1>
     </div>
     <div class="col">
-        <a href="/blog/new" class="btn btn-primary btn-sm mt-5" role="button">Comment Button</a>
+        <a href="/blog/new" class="btn btn-primary btn-sm mt-5" role="button">Create a new entry</a>
     </div>
 </div>
 
@@ -33,15 +33,27 @@
             </div>
             <div class="col">
                 {% if loop.index == 1 %}
-                    <h3 class="display-5">Subject</h3>
+                    <h3 class="display-5">Emoji</h3>
                 {% endif %}
-                {{blog.subject}}
+                {{blog.emoji}}
             </div>
             <div class="col">
                 {% if loop.index == 1 %}
-                    <h3 class="display-5">Rating</h3>
+                    <h3 class="display-5">Location</h3>
                 {% endif %}
-                {{blog.rating}}
+                {{blog.location}}
+            </div>
+            <div class="col">
+                {% if loop.index == 1 %}
+                    <h3 class="display-5">Day of the Week</h3>
+                {% endif %}
+                {{blog.dow}}
+            </div>
+            <div class="col">
+                {% if loop.index == 1 %}
+                    <h3 class="display-5">Time</h3>
+                {% endif %}
+                {{blog.Time}}
             </div>
         </div>
     {% endfor %}

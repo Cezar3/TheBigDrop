@@ -9,53 +9,35 @@
         <h1 class="display-1">Vent your mood through an Emoji?</h1>
     </div>
     <div class="col">
-        <a href="/blog/new" class="btn btn-primary btn-sm mt-5" role="button">Create a new entry</a>
+        <a href="/emoji/new" class="btn btn-primary btn-sm mt-5" role="button">Create a new entry</a>
     </div>
 </div>
 
-{% if blogs %}
-    {% for blog in blogs %}
+{% if emojis %}
+    {% for emoji in emojis %}
         <div class="row border-bottom">
             <div class="col-2">
                 {% if loop.index == 1 %}
                 <h3 class="display-5">Date</h3>
                 {% endif %}
 
-                <a href="/blog/{{blog.id}}">
-                    {{moment(blog.create_date).calendar()}}
+                <a href="/emoji/{{emoji.id}}">
+                    {{moment(emoji.create_date).calendar()}}
                 </a>
             </div>
             <div class="col-2">
                 {% if loop.index == 1 %}
                 <h3 class="display-5">User</h3>
                 {% endif %}
-                {{blog.author.fname}} {{blog.author.lname}}
+                {{emoji.author.fname}} {{emoji.author.lname}}
             </div>
             <div class="col">
                 {% if loop.index == 1 %}
                     <h3 class="display-5">Emoji</h3>
                 {% endif %}
-                {{blog.emoji}}
+                {{emoji.emote}}
             </div>
-            <div class="col">
-                {% if loop.index == 1 %}
-                    <h3 class="display-5">Location</h3>
-                {% endif %}
-                {{blog.location}}
-            </div>
-            <div class="col">
-                {% if loop.index == 1 %}
-                    <h3 class="display-5">Day of the Week</h3>
-                {% endif %}
-                {{blog.dow}}
-            </div>
-            <div class="col">
-                {% if loop.index == 1 %}
-                    <h3 class="display-5">Time</h3>
-                {% endif %}
-                {{blog.Time}}
-            </div>
-        </div>
+            <div
     {% endfor %}
 {% else %}
 

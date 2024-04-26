@@ -15,18 +15,10 @@
         <form method=post>
             {{ form.hidden_tag() }}
             <p>
-                {{ form.content.label }} <br>
-                {{ form.content(size=64) }}
+                {{ form.emote.label }} <br>
+                {{ form.emote(size=10) }}
                 <!--List the errors for this field-->
-                {% for error in form.content.errors %}
-                    <span style="color: red;">[{{ error }}]</span>
-                {% endfor %}
-            </p>
-            <p>
-                Add your emoji here <br>
-                {{ form.emoji(cols=64, rows=10) }}
-                <!--List the errors for this field-->
-                {% for error in form.emoji.errors %}
+                {% for error in form.emote.errors %}
                     <span style="color: red;">[{{ error }}]</span>
                 {% endfor %}
             </p>
@@ -34,7 +26,7 @@
                 {{ form.location.label }} <br>
                 {{ form.location(size=64) }}
                 <!--List the errors for this field-->
-                {% for error in form.location.errors %}
+                {% for error in form.emote.errors %}
                     <span style="color: red;">[{{ error }}]</span>
                 {% endfor %}
             </p>
@@ -42,14 +34,14 @@
                 {{ form.dow.label }} <br>
                 {{ form.dow(size=64) }}
                 <!--List the errors for this field-->
-                {% for error in form.dow.errors %}
+                {% for error in form.emote.errors %}
                     <span style="color: red;">[{{ error }}]</span>
                 {% endfor %}
             </p>
             <p>
                 {{ form.time.label }}<br>
                 {{ form.time() }}<br>
-                {% for error in form.time.errors %}
+                {% for error in form.emote.errors %}
                 <span style="color: red;">[{{ error }}]</span>
                 {% endfor %}
             </p>

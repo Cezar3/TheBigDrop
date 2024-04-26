@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+{% if emoji %}
+    {{moment(emoji.create_date).calendar()}} by {{emoji.author.fname}} {{emoji.author.lname}} 
+    {% if emoji.modifydate %}
+        modified {{moment(emoji.modifydate).calendar()}}
+    {% endif %}
+    <br>
+    {% if emoji.author == current_user %}
+        <a data-toggle="tooltip" data-placement="top" title="Delete Emoji" href="/emoji/delete/{{emoji.id}}">
+            <img width="40" class="bottom-image" src="/static/delete.png">
+        </a>
+        <a data-toggle="tooltip" data-placement="top" title="Edit Emoji" href="/emoji/edit/{{emoji.id}}">
+            <img width="40" class="bottom-image" src="/static/edit.png">
+        </a>
+    {% endif %}
+
+    <h1 class="display-5">{{emoji.emote}}</h1>
+    <p class="fs-3 text-break">
+        {% if emoji.author.image %}
+            <img width="120" class="img-thumbnail float-start me-2" src="data:image;base64,{{base64encode(emoji.author.image.read())}}">
+        {% endif %}
+            {{emoji.emote}} <br>
+            {{emoji.location}}
+            {{emoji.dow}}
+            {{emoji.time}}
+
+    </p>
+    
+{% else %}
+
+{% endif %}
+
+{% endblock %}

@@ -9,6 +9,7 @@ from wtforms.fields.html5 import URLField, DateField, IntegerRangeField, EmailFi
 from wtforms import StringField, SubmitField, TextAreaField, IntegerField, SelectField, FileField, RadioField
 from wtforms_components import TimeField
 
+
 class ProfileForm(FlaskForm):
     role = SelectField('Role',choices=[("Teacher","Teacher"),("Student","Student")])
     fname = StringField('First Name', validators=[DataRequired()])
@@ -33,12 +34,12 @@ class SleepForm(FlaskForm):
     minstosleep = IntegerField("How many minutes did it take you to fall asleep?", validators=[NumberRange(min=0,max=180, message="Enter a number between 0 and 180.")])
     submit = SubmitField("Submit")
 
-class BlogForm(FlaskForm):
-    subject = StringField('Subject', validators=[DataRequired()])
-    content = TextAreaField('Blog', validators=[DataRequired()])
-    tag = StringField('Tag', validators=[DataRequired()])
-    rating = IntegerField('Number Rating', validators=[DataRequired()] )
-    submit = SubmitField('Blog')
+class EmojiForm(FlaskForm):
+    emote = SelectField('Pick an emoji', choices=[("😄","😄"),("😔","😔"),("😡","😡"),("🤓","🤓"),("😎","😎"),("🤐","🤐"),("😈","😈"),("🤤","🤤"),("🤭","🤭"),("🤔","🤔"),("😛","😛"),("😱","😱"),("👽","👽"),("🥱","🥱"),("🥴","🥴"),("🥰","🥰"),("🤒","🤒"),("😺","😺")], validators=[DataRequired()])
+    location = TextAreaField('Where are you located?', validators=[DataRequired()])
+    dow = StringField('What day of the week is it?', validators=[DataRequired()])
+    time = StringField('What time of day is it?', validators=[DataRequired()] )
+    submit = SubmitField('Emoji')
 
 class DeerForm(FlaskForm):
     name = StringField('Name', validators=[DataRequired()])
@@ -46,10 +47,6 @@ class DeerForm(FlaskForm):
     likes = StringField('likes', validators=[DataRequired()])
     submit = SubmitField('Deer')
 
-class CommentForm(FlaskForm):
-    content = TextAreaField('Comment', validators=[DataRequired()])
-    submit = SubmitField('Comment')
-    
 class ClinicForm(FlaskForm):
     name = StringField('Name', validators=[DataRequired()])
     streetAddress = StringField('Address', validators=[DataRequired()])

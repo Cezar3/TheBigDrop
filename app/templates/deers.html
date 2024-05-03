@@ -21,7 +21,7 @@
                 <h3 class="display-5">Date</h3>
                 {% endif %}
 
-                <a href="/deer/{{deer.id}}">
+                <a href="/meditation/{{meditation.id}}">
                     {{moment(deer.create_date).calendar()}}
                 </a>
             </div>
@@ -33,7 +33,7 @@
             </div>
             <div class="col">
                 {% if loop.index == 1 %}
-                    <h3 class="display-5">Deer name</h3>
+                    <h3 class="display-5"> Deer</h3>
                 {% endif %}
                 {{deer.name}}
             </div>

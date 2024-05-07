@@ -68,12 +68,15 @@ class Blog(Document):
     meta = {
         'ordering': ['-createdate']
     }
-class Deer(Document):
+class Meditation(Document):
     author = ReferenceField('User',reverse_delete_rule=CASCADE) 
-    parent = ReferenceField('User',reverse_delete_rule=CASCADE) 
+    starttime = DateTimeField()
+    endtime = DateTimeField()
+    takeaway = StringField()
+    pride = StringField()
     name = StringField()
-    description = StringField()
-    likes = StringField()
+    meditationfile = FileField()
+    meditationUrl = StringField()
     create_date = DateTimeField(default=dt.datetime.utcnow)
     modify_date = DateTimeField()
 

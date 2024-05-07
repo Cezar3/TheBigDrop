@@ -6,36 +6,37 @@
 <img src="/static/CloudsPNG.png" class="rounded float-start" width = "200" hieght= "200" alt="...">    </div>
 <div class="row">
     <div class="col-4">
-        <h1 class="display-1">Want to adopt a deer?</h1>
+        <h1 class="display-1">Meditate...Now take a deep Breath</h1>
     </div>
     <div class="col">
-        <a href="/deer/new" class="btn btn-primary btn-sm mt-5" role="button">Adoption Button</a>
+        <a href="/meditation/new" class="btn btn-primary btn-sm mt-5" role="button">And in...</a>
     </div>
 </div>
 
-{% if deers %}
-    {% for deer in deers %}
+{% if meditation %}
+    {% for meditation in meditations %}
         <div class="row border-bottom">
             <div class="col-2">
                 {% if loop.index == 1 %}
-                <h3 class="display-5">Date</h3>
+                <h3 class="display-5">Start Time</h3>
                 {% endif %}
 
-                <a href="/deer/{{deer.id}}">
-                    {{moment(deer.create_date).calendar()}}
+                <a href="/meditation/{{meditation.id}}">
+                    {{moment(meditation.starttime).calendar()}}
                 </a>
             </div>
             <div class="col-2">
                 {% if loop.index == 1 %}
                 <h3 class="display-5">User</h3>
                 {% endif %}
-                {{deer.parent.fname}} {{deer.parent.lname}}
+                {{meditation.author.fname}} {{meditation.author.lname}}
             </div>
             <div class="col">
                 {% if loop.index == 1 %}
-                    <h3 class="display-5">Deer name</h3>
+                    <h3 class="display-5">meditation name</h3>
+                    <h3 class="display-5">meditation likes</h3>
                 {% endif %}
-                {{deer.name}}
+                {{meditation.name}}
             </div>
            
         </div>

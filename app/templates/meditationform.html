@@ -1,0 +1,181 @@
+{% extends "base.html" %}
+
+{% block body %}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<img src="/static/CloudsPNG.png" class="rounded float-end" width = "200" hieght= "200" alt="...">
+
+<img src="/static/CloudsPNG.png" class="rounded float-start" width = "200" hieght= "200" alt="...">    </div>
+<img src="/static/CloudsPNG.png" class="rounded float-end" width = "200" hieght= "200" alt="...">
+
+<img src="/static/CloudsPNG.png" class="rounded float-start" width = "200" hieght= "200" alt="...">    </div>
+        <h1>Time to Meditate!</h1>
+        <style>
+            
+                
+            #controls {
+                margin-left: 620px;
+                margin-bottom: 20px;
+            }
+    
+            #recordButton, #stopButton {
+                padding: 10px 20px;
+                font-size: 16px;
+                cursor: pointer;
+            }
+    
+            #audioElement {
+                margin-left: 620px;
+                margin-top: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <h3>Click here to record your thoughts</h3>
+       
+        <div id="controls">
+            <button id="recordButton">Breath in...</button>
+            <button id="stopButton" disabled>End meditation</button>
+        </div>
+    
+        <audio id="audioElement" controls></audio>
+        <p id="audioUrl"></p>
+    
+        <script>
+            let mediaRecorder;
+            let chunks = [];
+    
+            const recordButton = document.getElementById('recordButton');
+            const stopButton = document.getElementById('stopButton');
+            const audioElement = document.getElementById('audioElement');
+            const audioUrlText = document.getElementById('audioUrl')
+    
+            recordButton.addEventListener('click', startRecording);
+            stopButton.addEventListener('click', stopRecording);
+    
+            function startRecording() {
+                navigator.mediaDevices.getUserMedia({ audio: true })
+                    .then(function(stream) {
+                        mediaRecorder = new MediaRecorder(stream);
+                        mediaRecorder.ondataavailable = function(e) {
+                            chunks.push(e.data);
+                        };
+                        mediaRecorder.onstop = function(e) {
+                            const blob = new Blob(chunks, { 'type' : 'audio/ogg; codecs=opus' });
+                            chunks = [];
+                            const audioURL = URL.createObjectURL(blob);
+                            audioUrlText.textContent = audioURL.toString();
+                            audioElement.src = audioURL;
+                        };
+    
+                        mediaRecorder.start();
+                        recordButton.disabled = true;
+                        stopButton.disabled = false;
+                    })
+                    .catch(function(err) {
+                        console.log('no worky :( )' + err);
+                    });
+            }
+    
+            function stopRecording() {
+                mediaRecorder.stop();
+                recordButton.disabled = false;
+                stopButton.disabled = true;
+            }
+        </script>
+    </body>
+    </html>
+    
+        <div class="text-center">
+
+        
+        <form method=post enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
+            <p>
+                {{ form.meditationfile.label }} <br>
+                {{ form.meditationfile() }}
+    
+                {% for error in form.meditationfile.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.meditationUrl.label }} <br>
+                {{ form.meditationUrl() }}
+    
+                {% for error in form.meditationUrl.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+
+            <p>
+                {{ form.starttime.label }} <br>
+                {{ form.starttime(size=64) }}
+    
+                {% for error in form.starttime.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.endtime.label }} <br>
+                {{ form.endtime(cols=64, rows=10) }}
+                <!--List the errors for this field-->
+                {% for error in form.endtime.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.takeaway.label }} <br>
+                {{ form.takeaway(size=64) }}
+                <!--List the errors for this field-->
+                {% for error in form.takeaway.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.pride.label }} <br>
+                {{ form.pride(size=64) }}
+                <!--List the errors for this field-->
+                {% for error in form.pride.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.name.label }} <br>
+                {{ form.name(size=64) }}
+                <!--List the errors for this field-->
+                {% for error in form.name.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.submit.label }} <br>
+                {{ form.submit(size=64) }}
+                <!--List the errors for this field-->
+                {% for error in form.submit.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+           
+             <p>
+                <img src="/static/CloudsPNG.png" class="rounded float-end" width = "200" hieght= "200" alt="...">
+                <img src="/static/CloudsPNG.png" class="rounded float-start" width = "200" hieght= "200" alt="...">    </div>
+                <img src="/static/CloudsPNG.png" class="rounded float-end" width = "200" hieght= "200" alt="...">
+                <img src="/static/CloudsPNG.png" class="rounded float-end" width = "200" hieght= "200" alt="..."> 
+
+<img src="/static/CloudsPNG.png" class="rounded float-start" width = "200" hieght= "200" alt="...">    </div>
+<img src="/static/CloudsPNG.png" class="rounded float-end" width = "200" hieght= "200" alt="...">
+
+
+
+
+
+
+<img src="/static/CloudsPNG.png" class="rounded float-start" width = "200" hieght= "200" alt="...">    </div>
+
+            </p>
+        </form>
+    </div>
+       
+{% endblock %}

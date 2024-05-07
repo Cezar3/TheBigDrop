@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+{% if meditation %}
+    {{moment(meditation.create_date).calendar()}} by {{meditation.author.fname}} {{meditation.author.lname}} 
+    {% if meditation.modify_date %}
+        modified {{moment(meditation.modify_date).calendar()}}
+    {% endif %}
+    <br>
+    {% if meditation.author == current_user %}
+        <a data-toggle="tooltip" data-placement="top" title="Delete meditation" href="/meditation/delete/{{meditation.id}}">
+            <img width="40" class="bottom-image" src="/static/delete.png">
+        </a>
+        <a data-toggle="tooltip" data-placement="top" title="Edit Meditation" href="/meditation/edit/{{meditation.id}}">
+            <img width="40" class="bottom-image" src="/static/edit.png">
+        </a>
+    {% endif %}
+
+    <h1 class="">Meditation:{{meditation.name}}</h1>
+    <p1 class="">Things you are proud of: {{meditation.pride}}</p1>
+    </br>
+    <p1 class="">Takeaway: {{meditation.takeaway}}</p1>
+    <!-- <p1 class="">File: {{meditation.meditationfile}} </p1> -->
+    <audio id="audioElement2" controls src=''></audio>
+    <!-- <script type="text/javascript">
+        meditationfile = {{meditation.meditationfile}}
+        const audioElement = document.getElementById('audioElement2');
+        const audioURL = URL.createObjectURL({{meditation.meditationfile}});
+        audioElement.src = audioURL;
+    </script>
+ -->
+
+  
+    <p class="fs-3 text-break">
+        {% if meditation.author.image %}
+            <img width="120" class="img-thumbnail float-start me-2" src="data:image;base64,{{base64encode(meditation.author.image.read())}}">
+        {% endif %}
+            {{meditation.description}} <br>
+            {{meditation.likes}}  
+           
+
+    </p>
+    
+    
+
+    <!-- {% if adoptions %} -->
+    <!-- <h1 class="display-5">adoptions</h1>
+    {% for adoption in adoptions %}
+        {% if current_user == adoption.parent %}
+            <a href="/adoption/delete/{{adoption.id}}"><img width="20" src="/static/delete.png"></a> 
+            <a href="/adoption/edit/{{adoption.id}}"><img width="20" src="/static/edit.png"></a>
+        {% endif %}
+        {{moment(adoption.create_date).calendar()}} {{adoption.parent.username}} 
+        {% if adoption.modifydate %}
+            modified {{moment(adoption.modifydate).calendar()}}
+        {% endif %}
+        <br>
+        <p class="fs-3">
+            {{adoption.description}}
+        </p>
+    {% endfor %}
+    {% else %}
+        <h1 class="display-5">No Adoptions</h1>
+    {% endif %} -->
+{% else %}
+
+{% endif %}
+
+{% endblock %}

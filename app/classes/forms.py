@@ -40,11 +40,16 @@ class BlogForm(FlaskForm):
     rating = IntegerField('Number Rating', validators=[DataRequired()] )
     submit = SubmitField('Blog')
 
-class DeerForm(FlaskForm):
-    name = StringField('Name', validators=[DataRequired()])
-    description = TextAreaField('description', validators=[DataRequired()])
-    likes = StringField('likes', validators=[DataRequired()])
-    submit = SubmitField('Deer')
+class MeditationForm(FlaskForm):
+    meditationfile = FileField("download then attach your meditation")
+    meditationUrl = StringField("copy paste the url here")
+    starttime = TimeField("Start Time of Meditation") 
+    name = StringField("Name your meditation")
+    endtime = TimeField("End Time of Meditation")  
+    takeaway = StringField('What are some Takeaways?', validators=[DataRequired()])
+    pride = StringField('What are you proud of?', validators=[DataRequired()])
+    submit = SubmitField('Submit')
+    
 
 class CommentForm(FlaskForm):
     content = TextAreaField('Comment', validators=[DataRequired()])

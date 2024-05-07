@@ -10,6 +10,7 @@ from typing import KeysView
 from xmlrpc.client import Boolean
 
 from setuptools import SetuptoolsDeprecationWarning
+from wtforms import SelectField
 from app import app
 from flask import flash
 from flask_login import UserMixin
@@ -56,12 +57,12 @@ class Sleep(Document):
         'ordering': ['sleep_date']
     }
     
-class Blog(Document):
+class Emoji(Document):
     author = ReferenceField('User',reverse_delete_rule=CASCADE) 
-    subject = StringField()
-    content = StringField()
-    tag = StringField()
-    rating = IntField()
+    emote = StringField()
+    location = StringField()
+    dow = StringField()
+    time = StringField()
     create_date = DateTimeField(default=dt.datetime.utcnow)
     modify_date = DateTimeField()
 
@@ -98,20 +99,20 @@ class Meditation(Document):
 #         'ordering': ['-createdate']
 #     }
 
-class Comment(Document):
-    # Line 63 is a way to access all the information in Course and Teacher w/o storing it in this class
-    author = ReferenceField('User',reverse_delete_rule=CASCADE) 
-    blog = ReferenceField('Blog',reverse_delete_rule=CASCADE)
-    # This could be used to allow comments on comments
-    comment = ReferenceField('Comment',reverse_delete_rule=CASCADE)
-    # Line 68 is where you store all the info you need but won't find in the Course and Teacher Object
-    content = StringField()
-    create_date = DateTimeField(default=dt.datetime.utcnow)
-    modify_date = DateTimeField()
+# class Comment(Document):
+#     # Line 63 is a way to access all the information in Course and Teacher w/o storing it in this class
+#     author = ReferenceField('User',reverse_delete_rule=CASCADE) 
+#     blog = ReferenceField('Blog',reverse_delete_rule=CASCADE)
+#     # This could be used to allow comments on comments
+#     comment = ReferenceField('Comment',reverse_delete_rule=CASCADE)
+#     # Line 68 is where you store all the info you need but won't find in the Course and Teacher Object
+#     content = StringField()
+#     create_date = DateTimeField(default=dt.datetime.utcnow)
+#     modify_date = DateTimeField()
 
-    meta = {
-        'ordering': ['-createdate']
-    }
+    # meta = {
+    #     'ordering': ['-createdate']
+    # }
 
 class Clinic(Document):
     author = ReferenceField('User',reverse_delete_rule=CASCADE) 

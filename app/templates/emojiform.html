@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+
+
+
+{% block body %}
+
+<style>
+    #container {
+        position: relative;
+        width: 100%;
+        height: 500px; 
+        overflow: hidden; 
+    }
+   
+    #movingImage {
+        position: absolute;
+        top: 0%;
+        left: -30%;
+        transition: transform 30s linear; 
+    }
+</style>
+<img src="/static/CloudsPNG.png" class="rounded float-end" width = "200" hieght= "200" alt="...">
+
+<img src="/static/CloudsPNG.png" class="rounded float-start" width = "200" hieght= "200" alt="...">    </div>
+<img src="/static/CloudsPNG.png" class="rounded float-end" width = "200" hieght= "200" alt="...">
+
+<img src="/static/CloudsPNG.png" class="rounded float-start" width = "200" hieght= "200" alt="...">    </div>
+        <h1>Add a emoji!</h1>
+
+        <button id="playButton">Trauma LIVE Study</button>
+   
+        <audio id="whaleAudio" src="/static/whale3final.mp3"></audio>
+       
+        <div id="container">
+            <img id="movingImage" src="/static/whale.jpg" alt="Scary Moving Image">
+        </div>
+    
+        <script>
+            document.getElementById("playButton").addEventListener("click", function() {
+                var audio = document.getElementById("whaleAudio");
+                var movingImage = document.getElementById("movingImage");
+                
+                
+                document.body.style.backgroundColor = "purple";
+                
+               
+                audio.play();
+               
+                
+                setTimeout(function() {
+                    movingImage.style.transform = "translateX(140%)"; 
+                }, 100); 
+            });
+        </script>
+        
+        <div class="text-center">
+
+        
+        <form method=post>
+            {{ form.hidden_tag() }}
+            <p>
+                {{ form.emote.label }} <br>
+                {{ form.emote(size=10) }}
+                <!--List the errors for this field-->
+                {% for error in form.emote.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.location.label }} <br>
+                {{ form.location(size=64) }}
+                <!--List the errors for this field-->
+                {% for error in form.emote.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.dow.label }} <br>
+                {{ form.dow(size=64) }}
+                <!--List the errors for this field-->
+                {% for error in form.emote.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.time.label }}<br>
+                {{ form.time() }}<br>
+                {% for error in form.emote.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+    
+             <p>
+                <img src="/static/CloudsPNG.png" class="rounded float-end" width = "200" hieght= "200" alt="...">
+                <img src="/static/CloudsPNG.png" class="rounded float-start" width = "200" hieght= "200" alt="...">    </div>
+                <img src="/static/CloudsPNG.png" class="rounded float-end" width = "200" hieght= "200" alt="...">
+                <img src="/static/CloudsPNG.png" class="rounded float-end" width = "200" hieght= "200" alt="...">
+
+<img src="/static/CloudsPNG.png" class="rounded float-start" width = "200" hieght= "200" alt="...">    </div>
+<img src="/static/CloudsPNG.png" class="rounded float-end" width = "200" hieght= "200" alt="...">
+
+
+
+
+
+
+<img src="/static/CloudsPNG.png" class="rounded float-start" width = "200" hieght= "200" alt="...">    </div>
+
+
+                {{form.submit()}}
+            </p>
+        </form>
+    </div>
+   
+{% endblock %}

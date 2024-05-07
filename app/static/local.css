@@ -1,3 +1,6 @@
 html body {
-    background-color: #9bbeeb;
+  background-image: linear-gradient(to bottom right, rgb(213, 58, 58), rgb(255, 238, 0))
   }
+.background {
+    background-color:blue
+}
